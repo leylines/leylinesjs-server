@@ -1,5 +1,5 @@
 {
-  "name": "terriajs-server",
+  "name": "leylinesjs-server",
   "version": "3.3.4",
   "description": "NodeJS server for TerriaJS, consisting of a CORS proxy, proj4 CRS lookup service, ogr2ogr conversion service, and express static server.",
   "engineStrict": true,
@@ -20,11 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TerriaJS/TerriaJS-Server"
+    "url": "https://github.com/leylines/leylinesjs-server"
   },
   "keywords": [
-    "terriajs",
-    "National Map"
+    "leylinesjs"
   ],
   "license": "Apache-2.0",
   "bugs": {
