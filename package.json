@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/leylines/leylinesjs-server",
   "dependencies": {
-    "aws-sdk": "^2.456.0",
     "base-x": "^3.0.5",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.15.0",
@@ -44,7 +43,6 @@
     "json5": "^2.1.0",
     "morgan": "^1.7.0",
     "pg": "^8.7.3",
-    "pm2": "^3.2.2",
     "terriajs-ogr2ogr": "^1.0.0",
     "proj4": "^2.3.12",
     "proj4js-defs": "0.0.1",
