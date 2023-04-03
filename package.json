@@ -35,7 +35,6 @@
     "cors": "^2.7.1",
     "express": "^4.8.0",
     "express-brute": "^1.0.1",
-    "formidable": "^1.0.17",
     "geodesy": "^2.4.0",
     "json5": "^2.1.0",
     "morgan": "^1.7.0",
