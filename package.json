@@ -37,6 +37,7 @@
     "express-brute": "^1.0.1",
     "geodesy": "^2.4.0",
     "json5": "^2.1.0",
+    "leylines-solids": "https://github.com/leylines/leylines-solids#main",
     "morgan": "^1.7.0",
     "pg": "^8.11.3",
     "proj4": "^2.3.12",
