@@ -3,8 +3,7 @@
 var express = require('express');
 var proxy = require('../lib/controllers/proxy');
 var request = require('supertest');
-var Stream = require('stream').Writable;
-const { URL, URLSearchParams } = require('url');
+const { URL } = require('url');
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
@@ -605,7 +604,9 @@ describe('proxy', function() {
                 }
 
                 return request;
-            }
+            },
+
+            abort: () => {/* called by proxy.js on connection close */}
         };
 
         return request;
