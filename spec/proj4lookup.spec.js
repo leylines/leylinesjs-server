@@ -1,5 +1,3 @@
-var express = require('express');
-var proj4lookup = require('../lib/controllers/proj4lookup');
 var request = require('supertest');
 var makeserver = require('../lib/makeserver');
 
@@ -22,7 +20,8 @@ describe('proj4lookup', function() {
         it('should 404 unknown projection', function(done) {
             request(server)
                 .get('/api/v1/proj4def/EPSG:Notarealthing')
-                .expect(404, done);
+                .expect(404)
+                .end(assert(done));
         });
     });
 
