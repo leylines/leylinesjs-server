@@ -42,7 +42,7 @@
     "json5": "^2.2.3",
     "leylines-solids": "https://github.com/leylines/leylines-solids#main",
     "morgan": "^1.10.1",
-    "pg": "^8.16.0",
+    "pg": "^8.17.2",
     "proj4": "^2.3.12",
     "proj4js-defs": "0.0.1",
     "range_check": "^1.4.0",
