@@ -1,3 +1,18 @@
+## Changelog
+
+### Next Release - Unreleased
+
+* Migrated to pure ES Modules (ESM). CommonJS `require()` no longer supported.
+* Minimum Node.js version increased to 22.0.0.
+* Removed support for Node.js 20
+* Migrated from deprecated Node.js `url` module to WHATWG URL API.
+* Updated all variable declarations from `var` to `let`/`const`.
+* Added `node:` protocol for all Node.js built-in module imports.
+* Replace proj4js-defs with up-to-date proj4 definitions from proj4cli-defs package.
+* Fixed: Empty `newShareUrlPrefix` now correctly results in share URLs without a prefix, instead of broken URL starting with `-`.
+* Remove deprecated /proxyableDomains endpoint.
+* Report unused variables and fix errors.
+
 ### 4.0.3 - 2025-12-04
 
 * #### Security Fixes

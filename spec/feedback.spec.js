@@ -1,9 +1,7 @@
-"use strict";
-
-const request = require("supertest");
-const { http, HttpResponse, passthrough } = require("msw");
-const { setupServer } = require("msw/node");
-const makeServer = require("../lib/makeserver");
+import supertestReq from "supertest";
+import { http, HttpResponse, passthrough } from "msw";
+import { setupServer } from "msw/node";
+import makeServer from "../lib/makeserver.js";
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
@@ -64,6 +62,9 @@ describe("feedback", function () {
       labels: ["feedback", "bug"]
     };
 
-    await request(buildApp()).post("/feedback").send(feedbackData).expect(200);
+    await supertestReq(buildApp())
+      .post("/feedback")
+      .send(feedbackData)
+      .expect(200);
   });
 });

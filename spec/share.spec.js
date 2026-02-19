@@ -1,9 +1,8 @@
-"use strict";
-
-const makeServer = require("../lib/makeserver");
-const request = require("supertest");
-const { http, HttpResponse, passthrough } = require("msw");
-const { setupServer } = require("msw/node");
+import makeServer from "../lib/makeserver.js";
+import supertestReq from "supertest";
+import { http, HttpResponse, passthrough } from "msw";
+import { setupServer } from "msw/node";
+import options from "../lib/options.js";
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
@@ -35,8 +34,8 @@ describe("share endpoint (integration, real controller)", function () {
   };
 
   function buildApp() {
-    const options = require("../lib/options").init(true);
-    const mergedOptions = Object.assign(options, appOptions);
+    const opts = options.init(true);
+    const mergedOptions = Object.assign(opts, appOptions);
     return makeServer(mergedOptions);
   }
 
@@ -64,7 +63,7 @@ describe("share endpoint (integration, real controller)", function () {
 
       const payload = { test: "me" };
 
-      request(buildApp())
+      supertestReq(buildApp())
         .post("/share")
         .send(payload)
         .expect(201)
@@ -84,7 +83,7 @@ describe("share endpoint (integration, real controller)", function () {
 
     it("should return 413 when payload exceeds shareMaxRequestSize", function (done) {
       const largePayload = "a".repeat(250000); // 250KB
-      request(buildApp())
+      supertestReq(buildApp())
         .post("/share")
         .set("Content-Type", "application/json")
         .send(`{"data":"${largePayload}"}`)

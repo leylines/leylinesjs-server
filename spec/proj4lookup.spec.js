@@ -1,25 +1,33 @@
-var request = require("supertest");
-var makeserver = require("../lib/makeserver");
+import supertestReq from "supertest";
+import makeserver from "../lib/makeserver.js";
+import options from "../lib/options.js";
 
-var server;
+let server;
 
 describe("proj4lookup", function () {
   beforeEach(function () {
-    var options = require("../lib/options").init(true);
-    server = makeserver(options);
+    const opts = options.init(true);
+    server = makeserver(opts);
   });
 
   describe("on get", function () {
     it("should return a definition for EPSG:4326", function (done) {
-      request(server)
+      supertestReq(server)
         .get("/api/v1/proj4def/EPSG:4326")
         .expect(200, "+proj=longlat +datum=WGS84 +no_defs")
         .end(assert(done));
     });
 
-    it("should 404 unknown projection", function (done) {
-      request(server)
+    it("should 400 for non-numeric EPSG code", function (done) {
+      supertestReq(server)
         .get("/api/v1/proj4def/EPSG:Notarealthing")
+        .expect(400)
+        .end(assert(done));
+    });
+
+    it("should 404 for unknown projection", function (done) {
+      supertestReq(server)
+        .get("/api/v1/proj4def/EPSG:99999")
         .expect(404)
         .end(assert(done));
     });

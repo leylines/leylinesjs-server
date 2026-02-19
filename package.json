@@ -1,18 +1,22 @@
 {
   "name": "leylinesjs-server",
-  "version": "4.0.3",
+  "version": "5.0.0-alpha.0",
   "description": "NodeJS server for TerriaJS, consisting of a CORS proxy, proj4 CRS lookup service, and express static server.",
   "engineStrict": true,
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
-  "main": "lib/app.js",
+  "type": "module",
+  "exports": {
+    "./terriajs-server.js": "./terriajs-server.js",
+    ".": "./lib/app.js"
+  },
   "scripts": {
     "test": "jasmine",
+    "lint": "eslint .",
     "dev": "node --watch-path serverconfig.json --watch lib/app.js ",
     "start": "node lib/app.js",
-    "format": "prettier --write .",
-    "postpublish": "bash -c \"git tag -a ${npm_package_version} -m \"${npm_package_version}\" && git push origin ${npm_package_version}\""
+    "format": "prettier --write ."
   },
   "bin": {
     "leylinesjs-server": "leylinesjs-server.js"
@@ -30,30 +34,40 @@
   },
   "homepage": "https://github.com/leylines/leylinesjs-server",
   "dependencies": {
-    "aws-sdk": "^2.1336.0",
+    "@aws-sdk/client-s3": "^3.989.0",
     "base-x": "^5.0.1",
     "basic-auth": "^2.0.1",
-    "body-parser": "^2.2.1",
+    "body-parser": "^2.2.2",
     "bytes": "^3.1.2",
     "compression": "^1.8.1",
-    "cors": "^2.8.5",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "geodesy": "^2.4.0",
     "json5": "^2.2.3",
     "leylines-solids": "https://github.com/leylines/leylines-solids#main",
     "morgan": "^1.10.1",
     "pg": "^8.17.2",
-    "proj4": "^2.3.12",
-    "proj4js-defs": "0.0.1",
-    "range_check": "^1.4.0",
-    "rate-limiter-flexible": "^7.1.1",
-    "request": "^2.88.2",
+    "proj4-cli-defs": "^2.1.0",
+    "range_check": "^4.1.0",
+    "rate-limiter-flexible": "^9.1.1",
+    "undici": "^7.21.0",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "jasmine": "^5.12.0",
-    "msw": "^2.11.6",
-    "prettier": "^3.6.2",
-    "supertest": "^7.0.0"
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.0.1",
+    "@testcontainers/localstack": "^11.11.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.2.3",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^17.23.2",
+    "globals": "^17.3.0",
+    "http-proxy": "^1.18.1",
+    "jasmine": "^6.0.0",
+    "msw": "^2.12.10",
+    "prettier": "^3.8.1",
+    "supertest": "^7.2.2",
+    "testcontainers": "^11.11.0"
   }
 }
